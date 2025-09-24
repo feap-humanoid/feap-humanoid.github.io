@@ -3,236 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion">
-  <meta name="description" content="FEAP enables adaptive and humanlike humanoid locomotion over complex terrains using FiLM-enhanced encoders and adversarial motion priors.">
-  <meta name="keywords" content="Humanoid robots, FiLM-Enhanced Encoders, Adversarial Motion Priors, Locomotion, Reinforcement Learning">
-  <meta name="author" content="Han Jiang, Teng Chen, Guoteng Zhang, Xuewen Rong, Yibin Li">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Shandong University - Robotics Lab">
-  <meta property="og:title" content="FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion">
-  <meta property="og:description" content="FEAP enables adaptive and humanlike humanoid locomotion over complex terrains using FiLM-enhanced encoders and adversarial motion priors.">
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/FEAP_project">
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="FEAP Project Preview">
-  <meta property="article:published_time" content="2025-01-01T00:00:00.000Z">
-  <meta property="article:author" content="Han Jiang">
-  <meta property="article:section" content="Robotics">
-  <meta property="article:tag" content="Humanoid robots">
-  <meta property="article:tag" content="Reinforcement Learning">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@LabTwitterHandle">
-  <meta name="twitter:creator" content="@HanJiang">
-  <meta name="twitter:title" content="FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion">
-  <meta name="twitter:description" content="FEAP enables adaptive and humanlike humanoid locomotion over complex terrains using FiLM-enhanced encoders and adversarial motion priors.">
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="FEAP Project Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion">
-  <meta name="citation_author" content="Jiang, Han">
-  <meta name="citation_author" content="Chen, Teng">
-  <meta name="citation_author" content="Zhang, Guoteng">
-  <meta name="citation_author" content="Rong, Xuewen">
-  <meta name="citation_author" content="Li, Yibin">
-  <meta name="citation_publication_date" content="2025">
-  <meta name="citation_conference_title" content="IEEE Transactions on Industrial Electronics">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/feap_paper.pdf">
-
-  <!-- Favicon and CSS -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  </noscript>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-
   <title>FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors - Han Jiang et al.</title>
+  <meta name="description" content="FEAP enables adaptive and humanlike humanoid locomotion over complex terrains using FiLM-enhanced encoders and adversarial motion priors.">
+  <meta name="author" content="Han Jiang, Teng Chen, Guoteng Zhang, Xuewen Rong, Yibin Li">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    .hero.is-title { padding: 3rem 1.5rem; }
+    .video-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
+    .video-card { background: #fff; border: 1px solid #eee; padding: .75rem; border-radius: 8px; box-shadow: 0 6px 18px rgba(16,24,40,0.04); }
+    .video-card iframe { width: 100%; height: 360px; border: 0; }
+    .container-narrow { max-width: 960px; margin: 0 auto; }
+    .section { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    @media (max-width: 900px) { .video-wrap { grid-template-columns: 1fr; } .video-card iframe { height: 240px; } }
+  </style>
 </head>
 <body>
-
-<!-- Scroll to Top Button -->
-<button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-  <i class="fas fa-chevron-up"></i>
-</button>
-
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop has-text-centered">
-      <h1 class="title is-1 publication-title">FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion</h1>
-      <div class="is-size-5 publication-authors">
-        <span class="author-block"><a href="mailto:jh0618@mail.sdu.edu.cn">Han Jiang</a><sup>*</sup>,</span>
-        <span class="author-block">Teng Chen,</span>
-        <span class="author-block">Guoteng Zhang,</span>
-        <span class="author-block">Xuewen Rong,</span>
-        <span class="author-block">Yibin Li</span>
-      </div>
-      <div class="is-size-5 publication-authors">
-        <span class="author-block">School of Control Science and Engineering, Shandong University, Jinan, China</span>
-        <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-      </div>
-      <div class="publication-links">
-        <span class="link-block">
-          <a href="https://arxiv.org/pdf/<ARXIV_PAPER_ID>.pdf" target="_blank" class="button is-normal is-rounded is-dark">
-            <span class="icon"><i class="fas fa-file-pdf"></i></span>
-            <span>Paper</span>
-          </a>
-        </span>
-        <span class="link-block">
-          <a href="static/pdfs/supplementary_material.pdf" target="_blank" class="button is-normal is-rounded is-dark">
-            <span class="icon"><i class="fas fa-file-pdf"></i></span>
-            <span>Supplementary</span>
-          </a>
-        </span>
-        <span class="link-block">
-          <a href="https://github.com/YOUR_GITHUB_REPO" target="_blank" class="button is-normal is-rounded is-dark">
-            <span class="icon"><i class="fab fa-github"></i></span>
-            <span>Code</span>
-          </a>
-        </span>
-        <span class="link-block">
-          <a href="https://arxiv.org/abs/<ARXIV_PAPER_ID>" target="_blank" class="button is-normal is-rounded is-dark">
-            <span class="icon"><i class="ai ai-arxiv"></i></span>
-            <span>arXiv</span>
-          </a>
-        </span>
-      </div>
+  <section class="hero is-title has-background-light">
+    <div class="hero-body container container-narrow">
+      <h1 class="title is-2">FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion</h1>
+      <p class="subtitle is-6">Han Jiang, <em>Student Member, IEEE</em>, Teng Chen, <em>Member, IEEE</em>, Guoteng Zhang, <em>Member, IEEE</em>,<br>Xuewen Rong<sup>*</sup>, <em>Senior Member, IEEE</em>, Yibin Li, <em>Member, IEEE</em></p>
+      <p class="is-size-7">School of Control Science and Engineering, Shandong University, Jinan, 250062, China</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Teaser Video -->
-<section class="hero teaser">
-  <div class="container is-max-desktop has-text-centered">
-    <video poster="static/images/robot_teaser.png" autoplay controls muted loop height="100%" preload="metadata">
-      <source src="static/videos/feap_teaser.mp4" type="video/mp4">
-    </video>
-    <h2 class="subtitle has-text-centered">
-      Demonstration of humanoid robot performing walking, running, and stair climbing using FEAP.
-    </h2>
-  </div>
-</section>
+  <main class="section">
+    <div class="container container-narrow">
+      <h2 class="title is-4">Abstract</h2>
+      <div class="content">
+        <p>
+          Humanoid robots possess substantial potential for operation in complex environments, yet existing locomotion policies are often limited to simplified scenarios and suffer from poor robustness and inter-limb coordination. We introduce FEAP (FiLM-Enhanced Encoders and Adversarial Motion Priors), a reinforcement learning framework that enables adaptive and reliable humanoid locomotion on challenging terrains using only proprioceptive information. FEAP leverages a modular observation encoder that fuses multi-modal sensory inputs via Feature-wise Linear Modulation (FiLM), capturing both raw kinematics and high-level semantic features. To promote natural and energy-efficient movements, a parameterized adversarial motion prior based on a Wasserstein formulation provides a tunable inductive bias, allowing dynamic trade-offs between style fidelity and task performance. Safety is further ensured through constraint-aware policy optimization that penalizes unsafe behaviors. Trained in simulation with domain randomization and directly deployed on the Taishan Walker E1 humanoid robot, FEAP enables the robot to perform humanlike locomotion, exhibiting running on slopes and uneven terrains as well as walking over stair-like obstacles, while demonstrating superior robustness, adaptability, and safety compared to baseline methods.
+        </p>
+      </div>
 
-<!-- Abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Humanoid robots possess substantial potential for operation in complex environments, yet existing locomotion policies are often limited to simplified scenarios and suffer from poor robustness and inter-limb coordination. We introduce FEAP (FiLM-Enhanced Encoders and Adversarial Motion Priors), a reinforcement learning framework that enables adaptive and reliable humanoid locomotion on challenging terrains using only proprioceptive information. FEAP leverages a modular observation encoder that fuses multi-modal sensory inputs via FiLM, capturing both raw kinematics and high-level semantic features. To promote natural and energy-efficient movements, a parameterized adversarial motion prior based on a Wasserstein formulation provides a tunable inductive bias, allowing dynamic trade-offs between style fidelity and task performance. Safety is further ensured through constraint-aware policy optimization that penalizes unsafe behaviors. Trained in simulation with domain randomization and directly deployed on the Taishan Walker E1 humanoid robot, FEAP enables the robot to perform humanlike locomotion, exhibiting running on slopes and uneven terrains as well as walking over stair-like obstacles, while demonstrating superior robustness, adaptability, and safety compared to baseline methods.
-          </p>
+      <h2 class="title is-4">Key Innovations</h2>
+      <div class="content">
+        <ul>
+          <li><strong>FiLM-Enhanced Encoders:</strong> Modular multi-modal encoders fused via FiLM for robust terrain inference from proprioception.</li>
+          <li><strong>Parameterized Adversarial Motion Prior (AMP):</strong> Wasserstein-based AMP with tunable style-reward parameters to balance humanlike motion and task performance.</li>
+          <li><strong>Safety-Constrained One-Stage Training & Real-World Deployment:</strong> Constraint-aware optimization and successful deployment on the Taishan Walker E1 robot across diverse terrains.</li>
+        </ul>
+      </div>
+
+      <h2 class="title is-4">Videos</h2>
+      <p class="content">Below are two demonstration videos. They are embedded from bilibili for reviewer-friendly playback.</p>
+
+      <div class="video-wrap">
+        <div class="video-card">
+          <h3 class="is-size-6">Demo 1</h3>
+          <!-- Bilibili embed for BV1YCpazXEqe -->
+          <iframe src="https://player.bilibili.com/player.html?bvid=BV1YCpazXEqe&page=1" scrolling="no" allowfullscreen="true"></iframe>
+          <p class="is-size-7" style="margin-top:.5rem;">Bilibili video: BV1YCpazXEqe — walking and slope running demonstrations.</p>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">Demo 2</h3>
+          <!-- Bilibili embed for BV15SYizhEbe -->
+          <iframe src="https://player.bilibili.com/player.html?bvid=BV15SYizhEbe&page=1" scrolling="no" allowfullscreen="true"></iframe>
+          <p class="is-size-7" style="margin-top:.5rem;">Bilibili video: BV15SYizhEbe — stair-like obstacle and uneven terrain trials.</p>
         </div>
       </div>
+
+      <hr style="margin-top:1.5rem; margin-bottom:1.5rem;" />
+
+      <p class="is-size-7">Contact: <a href="mailto:jh0618@mail.sdu.edu.cn">jh0618@mail.sdu.edu.cn</a></p>
+
     </div>
-  </div>
-</section>
+  </main>
 
-<!-- Methods & Contributions -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Methods & Contributions</h2>
-    <ul>
-      <li><strong>FiLM-Enhanced Encoders:</strong> Modular observation encoder leveraging FiLM for adaptive feature fusion, capturing raw kinematics and high-level semantic features while inferring latent terrain characteristics.</li>
-      <li><strong>Parameterized AMP:</strong> Uses Wasserstein distance to stabilize adversarial motion prior training and dynamically adjusts style rewards for humanlike motion with terrain adaptability.</li>
-      <li><strong>Safety-Constrained One-Stage Training & Deployment:</strong> Single-stage training with safety constraints; deployed on Taishan Walker E1 robot demonstrating robust and humanlike locomotion over complex terrains.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Image Carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <img src="static/images/feap1.png" alt="Humanoid walking on slope" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">Humanoid walking on uneven slope</h2>
-        </div>
-        <div class="item">
-          <img src="static/images/feap2.png" alt="Humanoid running on terrain" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">Humanoid running on rough terrain</h2>
-        </div>
-        <div class="item">
-          <img src="static/images/feap3.png" alt="Stair climbing demonstration" loading="lazy"/>
-          <h2 class="subtitle has-text-centered">Stair climbing demonstration</h2>
-        </div>
-      </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="is-size-7">&copy; 2025 Han Jiang et al. — FEAP Project</p>
     </div>
-  </div>
-</section>
-
-<!-- YouTube Video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h2 class="title is-3">Video Presentation</h2>
-      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen width="100%" height="500"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- Poster PDF -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h2 class="title">Poster</h2>
-      <iframe src="static/pdfs/feap_poster.pdf" width="100%" height="550"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- BibTeX -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <div class="bibtex-header">
-      <h2 class="title">BibTeX</h2>
-      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-        <i class="fas fa-copy"></i> Copy
-      </button>
-    </div>
-    <pre id="bibtex-code"><code>@article{jiang2025feap,
-  title={FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion over Complex Terrains},
-  author={Han Jiang and Teng Chen and Guoteng Zhang and Xuewen Rong and Yibin Li},
-  journal={IEEE Transactions on Industrial Electronics},
-  year={2025},
-  url={https://github.com/YOUR_GITHUB_REPO}
-}</code></pre>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container has-text-centered">
-    <p>
-      Built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>. Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
-    </p>
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
