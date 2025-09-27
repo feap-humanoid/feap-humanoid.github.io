@@ -12,10 +12,10 @@
     .hero.is-title { padding: 3rem 1.5rem; }
     .video-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
     .video-card { background: #fff; border: 1px solid #eee; padding: .75rem; border-radius: 8px; box-shadow: 0 6px 18px rgba(16,24,40,0.04); }
-    .video-card iframe { width: 100%; height: 360px; border: 0; }
+    .video-card iframe { width: 100%; height: 280px; border: 0; }
     .container-narrow { max-width: 960px; margin: 0 auto; }
     .section { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-    @media (max-width: 900px) { .video-wrap { grid-template-columns: 1fr; } .video-card iframe { height: 240px; } }
+    @media (max-width: 900px) { .video-wrap { grid-template-columns: 1fr; } .video-card iframe { height: 200px; } }
   </style>
 </head>
 <body>
@@ -46,21 +46,47 @@
       </div>
 
       <h2 class="title is-4">Videos</h2>
-      <p class="content">Below are two demonstration videos. They are embedded from bilibili for reviewer-friendly playback.</p>
+      <p class="content">Below are demonstration videos of our humanoid robot, embedded from YouTube.</p>
 
       <div class="video-wrap">
         <div class="video-card">
-          <h3 class="is-size-6">Demo 1</h3>
-          <!-- Bilibili embed for BV1YCpazXEqe -->
-          <iframe src="https://player.bilibili.com/player.html?bvid=BV1YCpazXEqe&page=1" scrolling="no" allowfullscreen="true"></iframe>
-          <p class="is-size-7" style="margin-top:.5rem;">Bilibili video: BV1YCpazXEqe — walking and slope running demonstrations.</p>
+          <h3 class="is-size-6">Humanlike Walking</h3>
+          <iframe src="https://www.youtube.com/embed/iAzF4J3o9_4" allowfullscreen></iframe>
         </div>
 
         <div class="video-card">
-          <h3 class="is-size-6">Demo 2</h3>
-          <!-- Bilibili embed for BV15SYizhEbe -->
-          <iframe src="https://player.bilibili.com/player.html?bvid=BV15SYizhEbe&page=1" scrolling="no" allowfullscreen="true"></iframe>
-          <p class="is-size-7" style="margin-top:.5rem;">Bilibili video: BV15SYizhEbe — stair-like obstacle and uneven terrain trials.</p>
+          <h3 class="is-size-6">Indoor Running at 2.5 m/s</h3>
+          <iframe src="https://www.youtube.com/embed/IYFjSr8psxY" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">Outdoor Running</h3>
+          <iframe src="https://www.youtube.com/embed/YMGrvA7dg40" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">20 cm Stair Climbing</h3>
+          <iframe src="https://www.youtube.com/embed/ujIFJ4mTBVs" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">Stair Descent</h3>
+          <iframe src="https://www.youtube.com/embed/NijaQwfgxQE" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">Push Recovery</h3>
+          <iframe src="https://www.youtube.com/embed/GenVfAwLVuo" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">25° Slope</h3>
+          <iframe src="https://www.youtube.com/embed/MQYT3fWYlRc" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-card">
+          <h3 class="is-size-6">World Humanoid Robot Competition</h3>
+          <iframe src="https://www.youtube.com/embed/wU0Zbdlcbqs?start=11" allowfullscreen></iframe>
         </div>
       </div>
 
