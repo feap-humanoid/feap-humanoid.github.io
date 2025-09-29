@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors - Han Jiang et al.</title>
-  <meta name="description" content="FEAP enables adaptive and humanlike humanoid locomotion over complex terrains using FiLM-enhanced encoders and adversarial motion priors.">
-  <meta name="author" content="Han Jiang, Teng Chen, Guoteng Zhang, Yibin Li, Yong Fan, Xuewen Rong">
+  <title>FEAP: Feature-Enhanced Encoders and Adversarial Motion Priors - Han Jiang et al.</title>
+  <meta name="description" content="FEAP enables adaptive and humanlike humanoid locomotion over complex terrains using feature-enhanced encoders and adversarial motion priors.">
+  <meta name="author" content="Han Jiang, Teng Chen, Guoteng Zhang, Xuewen Rong, Yibin Li, Yong Fan">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
   <style>
     body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
@@ -21,16 +21,9 @@
 <body>
   <section class="hero is-title has-background-light">
     <div class="hero-body container container-narrow">
-      <h1 class="title is-2">FEAP: FiLM-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion</h1>
-      <p class="subtitle is-6">
-        Han Jiang, Teng Chen<sup>*</sup>, Guoteng Zhang, <em>Member, IEEE</em>,<br>
-        Yibin Li, <em>Member, IEEE</em>, Yong Fan,<br>
-        Xuewen Rong<sup>*</sup>, <em>Senior Member, IEEE</em>
-      </p>
-      <p class="is-size-7">
-        School of Control Science and Engineering, Shandong University, Jinan, 250062, China <br>
-        School of Rail Transportation, Shandong Jiaotong University, Jinan, Shandong, China
-      </p>
+      <h1 class="title is-2">FEAP: Feature-Enhanced Encoders and Adversarial Motion Priors for Humanoid Locomotion</h1>
+      <p class="subtitle is-6">Han Jiang, Teng Chen<sup>*</sup>, Guoteng Zhang, Xuewen Rong, Yibin Li, Yong Fan</p>
+      <p class="is-size-7">School of Control Science and Engineering, Shandong University, Jinan, 250062, China</p>
     </div>
   </section>
 
@@ -39,16 +32,16 @@
       <h2 class="title is-4">Abstract</h2>
       <div class="content">
         <p>
-          Humanoid robots possess substantial potential for operation in complex environments, yet existing locomotion policies are often limited to simplified scenarios and suffer from poor robustness and inter-limb coordination. We introduce FEAP (FiLM-Enhanced Encoders and Adversarial Motion Priors), a reinforcement learning framework that enables adaptive and reliable humanoid locomotion on challenging terrains using only proprioceptive information. FEAP leverages a modular observation encoder that fuses multi-modal sensory inputs via Feature-wise Linear Modulation (FiLM), capturing both raw kinematics and high-level semantic features. To promote natural and energy-efficient movements, a parameterized adversarial motion prior based on a Wasserstein formulation provides a tunable inductive bias, allowing dynamic trade-offs between style fidelity and task performance. Safety is further ensured through constraint-aware policy optimization that penalizes unsafe behaviors. Trained in simulation with domain randomization and directly deployed on the Taishan Walker E1 humanoid robot, FEAP enables the robot to perform humanlike locomotion, exhibiting running on slopes and uneven terrains as well as walking over stair-like obstacles, while demonstrating superior robustness, adaptability, and safety compared to baseline methods.
+          Humanoid robots possess great potential for operation in complex environments, yet existing locomotion policies are often limited to simplified scenarios and suffer from poor robustness and inter-limb coordination. We introduce <strong>FEAP</strong> (Feature-Enhanced Encoders and Adversarial Motion Priors), a reinforcement learning framework that enables adaptive and reliable humanoid locomotion on challenging terrains using only proprioceptive information. FEAP leverages a modular observation encoder that fuses multi-modal sensory inputs via feature-wise linear modulation (FiLM), capturing both raw kinematics and high-level semantic features. To promote natural and energy-efficient movements, a parameterized adversarial motion prior based on a Wasserstein formulation provides a tunable inductive bias, allowing dynamic trade-offs between style fidelity and task performance. Safety is further ensured through constraint-aware policy optimization that penalizes unsafe behaviors. Trained in simulation with domain randomization and directly deployed on the Taishan Walker E1 humanoid robot, FEAP enables the robot to perform humanlike locomotion, exhibiting humanlike running as well as walking over stair-like and uneven terrains, while demonstrating superior robustness, adaptability, and safety compared to baseline methods.
         </p>
       </div>
 
       <h2 class="title is-4">Key Innovations</h2>
       <div class="content">
         <ul>
-          <li><strong>FiLM-Enhanced Encoders:</strong> Modular multi-modal encoders fused via FiLM for robust terrain inference from proprioception.</li>
-          <li><strong>Parameterized Adversarial Motion Prior (AMP):</strong> Wasserstein-based AMP with tunable style-reward parameters to balance humanlike motion and task performance.</li>
-          <li><strong>Safety-Constrained One-Stage Training & Real-World Deployment:</strong> Constraint-aware optimization and successful deployment on the Taishan Walker E1 robot across diverse terrains.</li>
+          <li><strong>Feature-Enhanced Encoders:</strong> A modular design with FiLM-based adaptive fusion that enables the recovery of latent terrain characteristics under partial observability.</li>
+          <li><strong>Parameterized AMP:</strong> An adversarial motion prior stabilized by the Wasserstein distance and equipped with dynamic style reward adjustment for humanlike and adaptive locomotion.</li>
+          <li><strong>Safety-Constrained One-Stage Training and Deployment:</strong> A single-stage training framework with safety constraints, successfully deployed on the Taishan Walker E1 humanoid robot, demonstrating robust and natural locomotion across diverse terrains.</li>
         </ul>
       </div>
 
@@ -99,7 +92,11 @@
 
       <hr style="margin-top:1.5rem; margin-bottom:1.5rem;" />
 
-      <p class="is-size-7">Contact (Corresponding Author): <a href="mailto:rongxw@sdu.edu.cn">rongxw@sdu.edu.cn</a></p>
+      <p class="is-size-7">Contact: <a href="mailto:chenteng100@sdu.edu.cn">chenteng100@sdu.edu.cn</a></p>
+
+      <p class="is-size-7" style="margin-top:1rem;">
+        This page was built using the Academic Project Page Template which was adopted from the Nerfies project page. You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. This website is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </p>
 
     </div>
   </main>
@@ -107,11 +104,6 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p class="is-size-7">&copy; 2025 Han Jiang et al. — FEAP Project</p>
-      <p class="is-size-7">
-        This page was built using the <em>Academic Project Page Template</em> adopted from the Nerfies project page. <br>
-        You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br>
-        This website is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-      </p>
     </div>
   </footer>
 </body>
