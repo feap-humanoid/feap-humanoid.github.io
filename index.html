@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FEAP: Feature-Enhanced Adversarial Priors for Unified Multistyle Humanoid Locomotion on Complex Terrains</title>
+  <meta name="description" content="FEAP enables a single policy to acquire multiple human-like locomotion styles on complex terrains with autonomous behavior transitions.">
+  <meta name="author" content="Han Jiang, Teng Chen, Guoteng Zhang, Xuewen Rong, Yibin Li, Yong Fan">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2E86AB;
+      --secondary-color: #E63946;
+      --accent-color: #F18F01;
+      --text-dark: #1a1a1a;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --border-color: #e0e0e0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+    
+    .hero.is-title {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 1.5rem;
+      margin-bottom: 0;
+    }
+    
+    .hero.is-title .title {
+      color: white;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero.is-title .subtitle {
+      color: rgba(255,255,255,0.95);
+      font-weight: 400;
+    }
+    
+    .hero.is-title .is-size-7 {
+      color: rgba(255,255,255,0.85);
+    }
+    
+    .hero.is-title a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: underline;
+    }
+    
+    .hero.is-title a:hover {
+      color: white;
+    }
+    
+    .container-narrow {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .section {
+      padding: 3rem 0;
+    }
+    
+    .section:nth-child(even) {
+      background-color: var(--bg-light);
+    }
+    
+    .abstract-box {
+      background: white;
+      border-left: 4px solid var(--primary-color);
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    
+    .links-box {
+      background: white;
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-color);
+    }
+    
+    .button-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      background: var(--primary-color);
+      color: white !important;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: none;
+    }
+    
+    .button-link:hover {
+      background: #1e6a8a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46,134,171,0.3);
+    }
+    
+    .button-link.coming-soon {
+      background: #95a5a6;
+      cursor: not-allowed;
+      position: relative;
+    }
+    
+    .button-link.coming-soon:hover {
+      background: #7f8c8d;
+      transform: none;
+    }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+    
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    .video-card iframe,
+    .video-card video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 300px;
+      display: block;
+      background: #000;
+      border-radius: 0;
+      border: none;
+    }
+    
+    .video-card-full iframe,
+    .video-card-full video {
+      min-height: 450px;
+    }
+    
+    .video-card-content {
+      padding: 1.5rem;
+    }
+    
+    .video-card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    
+    .video-card-description {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    .video-card-full {
+      grid-column: 1 / -1;
+    }
+    
+    .video-card-full .video-card-content {
+      padding: 2rem;
+    }
+    
+    .video-card-full .video-card-title {
+      font-size: 1.25rem;
+    }
+    
+    h2.title {
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 3px solid var(--primary-color);
+      display: inline-block;
+    }
+    
+    .content ul {
+      margin-left: 1.5rem;
+    }
+    
+    .content li {
+      margin-bottom: 0.75rem;
+    }
+    
+    footer.footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    footer.footer a {
+      color: rgba(255,255,255,0.8);
+    }
+    
+    footer.footer a:hover {
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero.is-title {
+        padding: 2.5rem 1rem;
+      }
+      
+      .hero.is-title .title {
+        font-size: 1.75rem;
+      }
+      
+      .abstract-box, .links-box {
+        padding: 1.5rem;
+      }
+    }
+    
+    .author-affiliation {
+      margin-top: 0.5rem;
+    }
+    
+    .corresponding {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+  <section class="hero is-title">
+    <div class="hero-body">
+      <div class="container container-narrow">
+        <h1 class="title is-2">FEAP: Feature-Enhanced Adversarial Priors for Unified Multistyle Humanoid Locomotion on Complex Terrains</h1>
+        
+        <p class="subtitle is-5" style="margin-top: 1.5rem;">
+          Han Jiang<sup>1</sup>, 
+          Teng Chen<sup>*1</sup>, 
+          Guoteng Zhang<sup>1</sup>, <em>Member, IEEE</em>,<br>
+          Yibin Li<sup>1</sup>, <em>Member, IEEE</em>, 
+          Yong Fan<sup>2</sup>,<br>
+          Xuewen Rong<sup>*1</sup>, <em>Senior Member, IEEE</em>
+        </p>
+
+        <p class="is-size-7 author-affiliation">
+          <sup>1</sup>School of Control Science and Engineering, Shandong University, Jinan, 250062, China<br>
+          <sup>2</sup>School of Rail Transportation, Shandong Jiaotong University, Jinan, Shandong, China
+        </p>
+
+        <p class="is-size-7 corresponding">
+          <strong>Corresponding authors:</strong> 
+          <a href="mailto:chenteng100@sdu.edu.cn">chenteng100@sdu.edu.cn</a>, 
+          <a href="mailto:rongxw@sdu.edu.cn">rongxw@sdu.edu.cn</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="container container-narrow">
+        <div class="abstract-box">
+          <h2 class="title is-4" style="margin-top: 0;">Abstract</h2>
+          <div class="content">
+            <p>
+              Human locomotion demonstrates a rich diversity of styles across behaviors such as walking, running, and navigating complex terrains. However, most existing humanoid locomotion frameworks are limited to learning a single behavior or rely on separate policies for different motor skills, which constrains scalability and real-world applicability. Key challenges include substantial intra-style variations, terrain-induced distortions in proprioceptive signals, and the propensity of unified policies to converge toward averaged or ambiguous motion patterns. We present <strong>FEAP</strong> (Feature-Enhanced Adversarial Priors), a unified learning framework that enables a single policy to acquire multiple human-like locomotion styles on complex terrains within a single training phase. FEAP integrates motion priors with a feature-enhanced proprioceptive encoder and a multi-expert, style-consistent adversarial learning module, allowing the policy to capture diverse locomotion styles while maintaining robust stability across challenging environments. In extensive simulation and real-world experiments, FEAP enables the Taishan Walker E3 humanoid robot to execute natural walking, high-speed running up to 3.4 m/s, and robust traversal of complex terrains including stairs, platforms, and slopes. Notably, the policy autonomously transitions between motion styles based solely on proprioceptive feedback, demonstrating strong adaptability and stylistic consistency.
+            </p>
+          </div>
+        </div>
+
+        <div class="links-box">
+          <h3 class="title is-5" style="margin-top: 0; border-bottom: none; padding-bottom: 0;">Resources</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+            <a href="https://github.com/JackHan-Sdu/WalkE3-Dataset" target="_blank" class="button-link">
+              <i class="fas fa-database"></i> Dataset
+            </a>
+            <span class="button-link coming-soon" style="cursor: not-allowed;">
+              <i class="fas fa-code"></i> Code (Coming Soon)
+            </span>
+            <a href="mailto:chenteng100@sdu.edu.cn" class="button-link" style="background: var(--accent-color);">
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container-narrow">
+        <h2 class="title is-3">Key Contributions</h2>
+        <div class="content">
+          <ul style="font-size: 1.05rem;">
+            <li><strong>Unified Multi-Style Learning:</strong> A single policy acquires multiple human-like locomotion styles (walking, running, terrain-adaptive behaviors) across complex terrains in a single training stage without explicit mode switching.</li>
+            <li><strong>Feature-Enhanced Proprioceptive Encoder:</strong> Leverages modality-specific sub-encoders and Feature-wise Linear Modulation (FiLM)-based feature modulation to recover latent terrain cues under partial observability and construct stable, generalizable motion-semantic representations.</li>
+            <li><strong>Behavior-Clustered Multi-Discriminator AMP:</strong> Bounded Wasserstein discriminators stabilize adversarial training, enable style-consistent imitation across multiple motion behaviors, and prevent mode mixing and gradient instabilities.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container-narrow">
+        <h2 class="title is-3">Clustered Motion Dataset</h2>
+        <p class="content" style="margin-bottom: 2rem; color: var(--text-light);">
+          The following videos showcase the clustered motion datasets used for training the FEAP framework. These datasets represent behavior-specific human motion patterns that were automatically clustered and organized for multi-discriminator adversarial learning. Each cluster corresponds to a distinct locomotion behavior: omnidirectional walking, stair climbing, platform traversal, and running.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-card">
+            <video controls preload="metadata" playsinline webkit-playsinline>
+              <source src="static/videos/dataset_omiwalk.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+              <h3 class="video-card-title">Omnidirectional Walking Dataset</h3>
+              <p class="video-card-description">
+                Clustered motion data for omnidirectional walking behaviors, including forward, backward, lateral, and diagonal movements from the human motion dataset.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <video controls preload="metadata" playsinline webkit-playsinline>
+              <source src="static/videos/dataset_stair.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+              <h3 class="video-card-title">Stair Climbing Dataset</h3>
+              <p class="video-card-description">
+                Clustered motion data for stair climbing behaviors, capturing natural human motion patterns for ascending and descending stairs with various step heights.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <video controls preload="metadata" playsinline webkit-playsinline>
+              <source src="static/videos/dataset_platform.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+              <h3 class="video-card-title">Platform Traversal Dataset</h3>
+              <p class="video-card-description">
+                Clustered motion data for elevated platform traversal, representing human motion patterns for stepping onto and crossing elevated obstacles.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <video controls preload="metadata" playsinline webkit-playsinline>
+              <source src="static/videos/dataset_run.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+              <h3 class="video-card-title">Running Dataset</h3>
+              <p class="video-card-description">
+                Clustered motion data for high-speed running behaviors, capturing dynamic human running patterns with characteristic leg lift and arm-leg coordination.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container-narrow">
+        <h2 class="title is-3">Demonstration Videos</h2>
+        <p class="content" style="margin-bottom: 2rem; color: var(--text-light);">
+          The following videos showcase the diverse capabilities of the FEAP framework on the Taishan Walker E3 humanoid robot. All behaviors are learned from human motion data and demonstrate natural, human-like locomotion patterns.
+        </p>
+
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+          <p style="margin: 0; color: #856404; font-size: 0.95rem; line-height: 1.6;">
+            <strong><i class="fas fa-info-circle"></i> Note:</strong> During real-world experiments, safety personnel were present for supervision. We utilized AI-based image processing to remove human figures from the videos for clarity. Please note that some videos may contain minor artifacts or ghosting effects as a result of this post-processing.
+          </p>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-card video-card-full">
+            <iframe 
+              src="https://www.youtube.com/embed/bMhK8TGH-SQ" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 400px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S0: Complete Simulation Experiment</h3>
+              <p class="video-card-description">
+                A comprehensive one-shot demonstration showcasing all learned behaviors in simulation. The unified policy seamlessly transitions between walking, running, stair climbing, slope traversal, platform traversal, and omnidirectional movement without any explicit mode switching, demonstrating the framework's capability to acquire diverse locomotion styles within a single training phase.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/OK8Ptf2HEso" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S1: Ascending 18 cm Stairs with Edges</h3>
+              <p class="video-card-description">
+                The robot successfully climbs 18 cm stairs with edges. After a brief initial adaptation period (a few seconds), the robot no longer contacts the obstacles and directly and precisely steps over each step. This demonstrates the policy's ability to implicitly model terrain geometry and achieve anticipatory foot clearance that surpasses reactive approaches.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/1DRI8zpZLKA" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S2: Descending 18 cm Stairs with Edges</h3>
+              <p class="video-card-description">
+                The robot descends 18 cm stairs with edges. Throughout the entire descent, there are no instances of stepping into empty space. The robot leverages the experience gained from ascending stairs to accurately plan foot placement, demonstrating the policy's ability to transfer learned terrain knowledge across different locomotion directions.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/AappCBWH_wM" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S3: Traversing 32° Outdoor Uneven Slope</h3>
+              <p class="video-card-description">
+                The robot successfully traverses a 32° outdoor slope with uneven terrain. There are no instances of slipping or excessive leg lifting behaviors. The robot maintains stable and natural locomotion throughout the traversal, demonstrating robust adaptation to challenging outdoor terrain conditions.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/6Jh6U9tL98s" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S4: Traversing 38 cm Elevated Platform</h3>
+              <p class="video-card-description">
+                The robot traverses a 38 cm elevated platform, which presents a significant challenge compared to stair climbing. The robot lifts its leg naturally without excessive movements or overfitting to stair climbing patterns. This demonstrates the multi-discriminator design's ability to maintain distinct behaviors for different locomotion scenarios while avoiding mode collapse.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/THAC5yry6s0" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S5: High-Speed Running at 3.4 m/s</h3>
+              <p class="video-card-description">
+                The robot achieves stable high-speed running at 3.4 m/s with clear airborne phases. The arm and leg movements show high similarity to the human motion dataset, demonstrating that the learned policy effectively captures characteristic behaviors of human running, including substantial leg lift during the swing phase and natural arm-leg coordination.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/IyAh2qQXEHo" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S6: Omnidirectional Walking</h3>
+              <p class="video-card-description">
+                The robot performs omnidirectional walking in multiple directions (forward, backward, lateral, diagonal) with natural and light foot placement. The policy autonomously transitions between different walking directions based solely on velocity commands, demonstrating seamless behavior adaptation without explicit mode switching.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/8XBMZpcQoK8" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S7: Push Recovery Without Commands</h3>
+              <p class="video-card-description">
+                A human pushes the robot while it receives no velocity commands. The robot does not exhibit excessive reactions but instead responds naturally like a human, being pushed forward while maintaining balance. This demonstrates the policy's robust push-recovery capabilities and natural response to external disturbances.
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/LUW_BwqcP-k" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16/9; min-height: 300px;">
+            </iframe>
+            <div class="video-card-content">
+              <h3 class="video-card-title">S8: Locomotion with 5 kg Payload</h3>
+              <p class="video-card-description">
+                The robot performs various locomotion behaviors while carrying a 5 kg payload on its back. The robot maintains stable and natural movement patterns despite the additional mass, demonstrating the framework's robustness to payload variations and its ability to adapt to different physical configurations.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="is-size-6" style="margin-bottom: 0.5rem;">
+        <strong>FEAP Project</strong>
+      </p>
+      <p class="is-size-7" style="color: rgba(255,255,255,0.7);">
+        &copy; 2025 Han Jiang, Teng Chen, Guoteng Zhang, Xuewen Rong, Yibin Li, Yong Fan
+      </p>
+      <p class="is-size-7" style="margin-top: 1rem; color: rgba(255,255,255,0.6);">
+        School of Control Science and Engineering, Shandong University<br>
+        School of Rail Transportation, Shandong Jiaotong University
+      </p>
+      <hr style="margin: 2rem auto; max-width: 600px; border: none; border-top: 1px solid rgba(255,255,255,0.2);">
+      <p class="is-size-7" style="margin-top: 1.5rem; color: rgba(255,255,255,0.5); line-height: 1.6;">
+        This website is built using the 
+        <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.7); text-decoration: underline;">
+          Academic Project Page Template
+        </a> 
+        by Eliahu Horwitz, licensed under 
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.7); text-decoration: underline;">
+          Creative Commons Attribution-ShareAlike 4.0 International License
+        </a>.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
