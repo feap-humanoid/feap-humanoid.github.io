@@ -259,13 +259,13 @@
           Guoteng Zhang<sup>1</sup>, <em>Member, IEEE</em>,<br>
           Yibin Li<sup>1</sup>, <em>Member, IEEE</em>, 
           Yong Fan<sup>2</sup>,<br>
-          Xuewen Rong<sup>*1</sup>, <em>Senior Member, IEEE</em>
-        </p>
+        Xuewen Rong<sup>*1</sup>, <em>Senior Member, IEEE</em>
+      </p>
 
         <p class="is-size-7 author-affiliation">
-          <sup>1</sup>School of Control Science and Engineering, Shandong University, Jinan, 250062, China<br>
-          <sup>2</sup>School of Rail Transportation, Shandong Jiaotong University, Jinan, Shandong, China
-        </p>
+        <sup>1</sup>School of Control Science and Engineering, Shandong University, Jinan, 250062, China<br>
+        <sup>2</sup>School of Rail Transportation, Shandong Jiaotong University, Jinan, Shandong, China
+      </p>
 
         <p class="is-size-7 corresponding">
           <strong>Corresponding authors:</strong> 
@@ -278,11 +278,11 @@
 
   <main>
     <section class="section">
-      <div class="container container-narrow">
+    <div class="container container-narrow">
         <div class="abstract-box">
           <h2 class="title is-4" style="margin-top: 0;">Abstract</h2>
-          <div class="content">
-            <p>
+      <div class="content">
+        <p>
               Human locomotion demonstrates a rich diversity of styles across behaviors such as walking, running, and navigating complex terrains. However, most existing humanoid locomotion frameworks are limited to learning a single behavior or rely on separate policies for different motor skills, which constrains scalability and real-world applicability. Key challenges include substantial intra-style variations, terrain-induced distortions in proprioceptive signals, and the propensity of unified policies to converge toward averaged or ambiguous motion patterns. We present <strong>FEAP</strong> (Feature-Enhanced Adversarial Priors), a unified learning framework that enables a single policy to acquire multiple human-like locomotion styles on complex terrains within a single training phase. FEAP integrates motion priors with a feature-enhanced proprioceptive encoder and a multi-expert, style-consistent adversarial learning module, allowing the policy to capture diverse locomotion styles while maintaining robust stability across challenging environments. In extensive simulation and real-world experiments, FEAP enables the Taishan Walker E3 humanoid robot to execute natural walking, high-speed running up to 3.4 m/s, and robust traversal of complex terrains including stairs, platforms, and slopes. Notably, the policy autonomously transitions between motion styles based solely on proprioceptive feedback, demonstrating strong adaptability and stylistic consistency.
             </p>
           </div>
@@ -308,75 +308,12 @@
     <section class="section">
       <div class="container container-narrow">
         <h2 class="title is-3">Key Contributions</h2>
-        <div class="content">
+      <div class="content">
           <ul style="font-size: 1.05rem;">
             <li><strong>Unified Multi-Style Learning:</strong> A single policy acquires multiple human-like locomotion styles (walking, running, terrain-adaptive behaviors) across complex terrains in a single training stage without explicit mode switching.</li>
             <li><strong>Feature-Enhanced Proprioceptive Encoder:</strong> Leverages modality-specific sub-encoders and Feature-wise Linear Modulation (FiLM)-based feature modulation to recover latent terrain cues under partial observability and construct stable, generalizable motion-semantic representations.</li>
             <li><strong>Behavior-Clustered Multi-Discriminator AMP:</strong> Bounded Wasserstein discriminators stabilize adversarial training, enable style-consistent imitation across multiple motion behaviors, and prevent mode mixing and gradient instabilities.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container container-narrow">
-        <h2 class="title is-3">Clustered Motion Dataset</h2>
-        <p class="content" style="margin-bottom: 2rem; color: var(--text-light);">
-          The following videos showcase the clustered motion datasets used for training the FEAP framework. These datasets represent behavior-specific human motion patterns that were automatically clustered and organized for multi-discriminator adversarial learning. Each cluster corresponds to a distinct locomotion behavior: omnidirectional walking, stair climbing, platform traversal, and running.
-        </p>
-
-        <div class="video-grid">
-          <div class="video-card">
-            <video controls preload="metadata" playsinline webkit-playsinline>
-              <source src="static/videos/dataset_omiwalk.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-              <h3 class="video-card-title">Omnidirectional Walking Dataset</h3>
-              <p class="video-card-description">
-                Clustered motion data for omnidirectional walking behaviors, including forward, backward, lateral, and diagonal movements from the human motion dataset.
-              </p>
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" playsinline webkit-playsinline>
-              <source src="static/videos/dataset_stair.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-              <h3 class="video-card-title">Stair Climbing Dataset</h3>
-              <p class="video-card-description">
-                Clustered motion data for stair climbing behaviors, capturing natural human motion patterns for ascending and descending stairs with various step heights.
-              </p>
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" playsinline webkit-playsinline>
-              <source src="static/videos/dataset_platform.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-              <h3 class="video-card-title">Platform Traversal Dataset</h3>
-              <p class="video-card-description">
-                Clustered motion data for elevated platform traversal, representing human motion patterns for stepping onto and crossing elevated obstacles.
-              </p>
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" playsinline webkit-playsinline>
-              <source src="static/videos/dataset_run.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-card-content">
-              <h3 class="video-card-title">Running Dataset</h3>
-              <p class="video-card-description">
-                Clustered motion data for high-speed running behaviors, capturing dynamic human running patterns with characteristic leg lift and arm-leg coordination.
-              </p>
-            </div>
-          </div>
+        </ul>
         </div>
       </div>
     </section>
@@ -441,9 +378,9 @@
                 The robot descends 18 cm stairs with edges. Throughout the entire descent, there are no instances of stepping into empty space. The robot leverages the experience gained from ascending stairs to accurately plan foot placement, demonstrating the policy's ability to transfer learned terrain knowledge across different locomotion directions.
               </p>
             </div>
-          </div>
+        </div>
 
-          <div class="video-card">
+        <div class="video-card">
             <iframe 
               src="https://www.youtube.com/embed/AappCBWH_wM" 
               frameborder="0" 
@@ -457,9 +394,9 @@
                 The robot successfully traverses a 32° outdoor slope with uneven terrain. There are no instances of slipping or excessive leg lifting behaviors. The robot maintains stable and natural locomotion throughout the traversal, demonstrating robust adaptation to challenging outdoor terrain conditions.
               </p>
             </div>
-          </div>
+        </div>
 
-          <div class="video-card">
+        <div class="video-card">
             <iframe 
               src="https://www.youtube.com/embed/6Jh6U9tL98s" 
               frameborder="0" 
@@ -473,9 +410,9 @@
                 The robot traverses a 38 cm elevated platform, which presents a significant challenge compared to stair climbing. The robot lifts its leg naturally without excessive movements or overfitting to stair climbing patterns. This demonstrates the multi-discriminator design's ability to maintain distinct behaviors for different locomotion scenarios while avoiding mode collapse.
               </p>
             </div>
-          </div>
+        </div>
 
-          <div class="video-card">
+        <div class="video-card">
             <iframe 
               src="https://www.youtube.com/embed/THAC5yry6s0" 
               frameborder="0" 
@@ -488,8 +425,8 @@
               <p class="video-card-description">
                 The robot achieves stable high-speed running at 3.4 m/s with clear airborne phases. The arm and leg movements show high similarity to the human motion dataset, demonstrating that the learned policy effectively captures characteristic behaviors of human running, including substantial leg lift during the swing phase and natural arm-leg coordination.
               </p>
-            </div>
-          </div>
+        </div>
+      </div>
 
           <div class="video-card">
             <iframe 
@@ -535,11 +472,11 @@
               <h3 class="video-card-title">S8: Locomotion with 5 kg Payload</h3>
               <p class="video-card-description">
                 The robot performs various locomotion behaviors while carrying a 5 kg payload on its back. The robot maintains stable and natural movement patterns despite the additional mass, demonstrating the framework's robustness to payload variations and its ability to adapt to different physical configurations.
-              </p>
+      </p>
             </div>
           </div>
 
-        </div>
+    </div>
       </div>
     </section>
   </main>
