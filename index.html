@@ -320,6 +320,39 @@
 
     <section class="section">
       <div class="container container-narrow">
+        <h2 class="title is-3">Framework Overview</h2>
+        <div class="content" style="margin-bottom: 2rem;">
+          <p style="margin-bottom: 1.5rem; color: var(--text-light);">
+            The FEAP framework consists of two main components: (A) Feature-Enhanced Proprioceptive Encoder for terrain-aware feature modulation and motion-semantic representation, and (B) Behavior-Clustered Multi-Discriminator AMP for style-consistent adversarial motion priors.
+          </p>
+          <div style="text-align: center; margin: 2rem 0;">
+            <img src="static/images/01_1.svg" alt="FEAP Framework Architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container-narrow">
+        <h2 class="title is-3">Motion Dataset and Behavior Categories</h2>
+        <div class="content" style="margin-bottom: 2rem;">
+          <p style="margin-bottom: 1.5rem; color: var(--text-light);">
+            The human motion dataset is organized into four primary dataset groups: walking, running, stair climbing, and platform traversal. Each dataset group encompasses semantically coherent sub-behaviors that share similar motion characteristics and kinematic patterns. The figure shows actors wearing motion capture suits performing behaviors in each dataset group (left side of each panel), alongside the corresponding robot behaviors learned through training (right side of each panel).
+          </p>
+          <div style="text-align: center; margin: 2rem 0;">
+            <img src="static/images/15.png" alt="Motion Dataset Groups and Learned Robot Behaviors" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+          </div>
+          <div style="background: #f8f9fa; border-left: 4px solid var(--primary-color); padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
+            <p style="margin: 0; color: var(--text-dark); font-size: 0.95rem; line-height: 1.6;">
+              <strong>Dataset Groups:</strong> The walking dataset group includes: (A) stance, (B) walk, (C) turn, and (D) lateral. The running dataset group includes: (E) high-speed running. The stair climbing dataset group includes: (F) up stair, (G) down stair, and (H) slope. The platform traversal dataset group includes: (I) up platform and (J) down platform.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container-narrow">
         <h2 class="title is-3">Demonstration Videos</h2>
         <p class="content" style="margin-bottom: 2rem; color: var(--text-light);">
           The following videos showcase the diverse capabilities of the FEAP framework on the Taishan Walker E3 humanoid robot. All behaviors are learned from human motion data and demonstrate natural, human-like locomotion patterns.
